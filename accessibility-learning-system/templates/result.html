@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Result - Accessibility Learning Platform</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header role="banner">
+        <h1>Accessibility Learning Platform</h1>
+        <p class="subtitle">Your audio is ready!</p>
+    </header>
+
+    <main id="main-content" role="main">
+        <!-- Audio Player -->
+        <section class="result-section" aria-labelledby="audio-heading">
+            <h2 id="audio-heading">Audio Player</h2>
+
+            <div class="audio-container">
+                <audio
+                    id="audio-player"
+                    controls
+                    autoplay
+                    aria-label="Generated speech audio"
+                    src="{{ url_for('serve_audio', filename=audio_file) }}"
+                >
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+
+            <div class="audio-actions">
+                <a
+                    href="{{ url_for('download', filename=audio_file) }}"
+                    class="btn-download"
+                    role="button"
+                    aria-label="Download audio file"
+                >
+                    Download Audio
+                </a>
+                <a
+                    href="{{ url_for('index') }}"
+                    class="btn-back"
+                    role="button"
+                    aria-label="Go back to convert more text"
+                >
+                    Convert More
+                </a>
+            </div>
+        </section>
+
+        <!-- Extracted Text Preview -->
+        {% if text %}
+        <section class="text-preview" aria-labelledby="text-heading">
+            <h2 id="text-heading">Converted Text</h2>
+            <div class="text-content" tabindex="0" aria-label="Text that was converted to speech">
+                {{ text }}
+            </div>
+        </section>
+        {% endif %}
+    </main>
+
+    <footer role="contentinfo">
+        <p>&copy; 2026 Accessibility Learning Platform. Built for inclusive education.</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

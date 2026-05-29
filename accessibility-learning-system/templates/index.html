@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Accessibility Learning Platform</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+
+
+    <header role="banner">
+
+        <h1>Accessibility Learning Platform</h1>
+
+        <p class="subtitle">Text-to-Speech Learning Assistant for Inclusive Education</p>
+
+    </header>
+
+
+
+    <main id="main-content" role="main">
+
+        <!-- Flash messages -->
+
+        {% with messages = get_flashed_messages() %}
+
+        {% if messages %}
+
+        <div class="flash-messages" role="alert" aria-live="assertive">
+
+            {% for message in messages %}
+
+            <p class="flash">{{ message }}</p>
+
+            {% endfor %}
+
+        </div>
+
+        {% endif %}
+
+        {% endwith %}
+
+
+
+        <form action="{{ url_for('convert') }}" method="POST" enctype="multipart/form-data" aria-label="Convert text or PDF to speech">
+
+
+
+            <!-- Text Input Section -->
+
+            <section class="input-section" aria-labelledby="text-label">
+
+                <label id="text-label" for="text-input" class="section-label">Enter Text</label>
+
+                <textarea
+
+                    id="text-input"
+
+                    name="text"
+
+                    rows="8"
+
+                    placeholder="Type or paste your learning material here..."
+
+                    aria-describedby="text-help"
+
+                ></textarea>
+
+                <p id="text-help" class="help-text">Enter the text you want converted to speech.</p>
+
+            </section>
+
+
+
+            <div class="divider" role="separator">
+
+                <span>OR</span>
+
+            </div>
+
+
+
+            <!-- PDF Upload Section -->
+
+            <section class="input-section" aria-labelledby="pdf-label">
+
+                <label id="pdf-label" for="pdf-input" class="section-label">Upload PDF</label>
+
+                <div class="file-upload">
+
+                    <input
+
+                        type="file"
+
+                        id="pdf-input"
+
+                        name="pdf"
+
+                        accept=".pdf"
+
+                        aria-describedby="pdf-help"
+
+                    >
+
+                    <p id="pdf-file-name" class="file-name" aria-live="polite"></p>
+
+                </div>
+
+                <p id="pdf-help" class="help-text">Upload a PDF document (max 16 MB). Text will be extracted automatically.</p>
+
+            </section>
+
+
+
+            <!-- Submit -->
+
+            <button type="submit" class="btn-convert" aria-label="Convert to speech">
+
+                Convert to Speech
+
+            </button>
+
+        </form>
+
+    </main>
+
+
+
+    <footer role="contentinfo">
+
+        <p>&copy; 2026 Accessibility Learning Platform. Built for inclusive education.</p>
+
+    </footer>
+
+
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>
+

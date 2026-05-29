@@ -1,0 +1,367 @@
+/* ===== CSS Reset & Base ===== */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg-primary: #1a1a2e;
+    --bg-secondary: #16213e;
+    --bg-card: #0f3460;
+    --text-primary: #ffffff;
+    --text-secondary: #e0e0e0;
+    --accent: #e94560;
+    --accent-hover: #ff6b81;
+    --success: #2ecc71;
+    --border-radius: 12px;
+    --focus-outline: 3px solid #e94560;
+}
+
+html {
+    font-size: 18px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.7;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===== Skip Link (Accessibility) ===== */
+.skip-link {
+    position: absolute;
+    top: -100%;
+    left: 0;
+    background: var(--accent);
+    color: #fff;
+    padding: 12px 24px;
+    z-index: 1000;
+    font-size: 1rem;
+    text-decoration: none;
+    border-radius: 0 0 var(--border-radius) 0;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* ===== Focus Styles (Keyboard Navigation) ===== */
+*:focus-visible {
+    outline: var(--focus-outline);
+    outline-offset: 3px;
+}
+
+/* ===== Header ===== */
+header {
+    background: var(--bg-secondary);
+    text-align: center;
+    padding: 2rem 1rem;
+    border-bottom: 3px solid var(--accent);
+}
+
+header h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+header .subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-top: 0.5rem;
+}
+
+/* ===== Main Content ===== */
+main {
+    flex: 1;
+    max-width: 800px;
+    width: 100%;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+}
+
+/* ===== Flash Messages ===== */
+.flash-messages {
+    margin-bottom: 1.5rem;
+}
+
+.flash {
+    background: #e74c3c;
+    color: #fff;
+    padding: 1rem 1.5rem;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+/* ===== Form Sections ===== */
+.input-section {
+    margin-bottom: 1.5rem;
+}
+
+.section-label,
+fieldset legend {
+    display: block;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+    color: var(--text-primary);
+}
+
+fieldset {
+    border: none;
+    padding: 0;
+}
+
+textarea {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
+    font-family: inherit;
+    color: var(--text-primary);
+    background: var(--bg-card);
+    border: 2px solid transparent;
+    border-radius: var(--border-radius);
+    resize: vertical;
+    transition: border-color 0.2s;
+}
+
+textarea:focus {
+    border-color: var(--accent);
+    outline: none;
+}
+
+textarea::placeholder {
+    color: #8899aa;
+}
+
+.help-text {
+    font-size: 0.85rem;
+    color: #8899aa;
+    margin-top: 0.4rem;
+}
+
+/* ===== File Upload ===== */
+.file-upload {
+    position: relative;
+}
+
+input[type="file"] {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+    background: var(--bg-card);
+    color: var(--text-primary);
+    border: 2px dashed #4a6fa5;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: border-color 0.2s;
+}
+
+input[type="file"]:hover,
+input[type="file"]:focus {
+    border-color: var(--accent);
+}
+
+.file-name {
+    font-size: 0.9rem;
+    color: var(--success);
+    margin-top: 0.4rem;
+}
+
+/* ===== Divider ===== */
+.divider {
+    display: flex;
+    align-items: center;
+    margin: 1.5rem 0;
+    gap: 1rem;
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+    flex: 1;
+    height: 2px;
+    background: #4a6fa5;
+}
+
+.divider span {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #8899aa;
+}
+
+/* ===== Radio Buttons ===== */
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.radio-label {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 0.8rem 1rem;
+    background: var(--bg-card);
+    border-radius: var(--border-radius);
+    border: 2px solid transparent;
+    transition: border-color 0.2s;
+}
+
+.radio-label:hover {
+    border-color: var(--accent);
+}
+
+.radio-label input[type="radio"] {
+    width: 20px;
+    height: 20px;
+    accent-color: var(--accent);
+    cursor: pointer;
+}
+
+/* ===== Buttons ===== */
+.btn-convert {
+    display: block;
+    width: 100%;
+    padding: 1.1rem;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #fff;
+    background: var(--accent);
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    margin-top: 1.5rem;
+    transition: background 0.2s, transform 0.1s;
+    letter-spacing: 0.5px;
+}
+
+.btn-convert:hover {
+    background: var(--accent-hover);
+}
+
+.btn-convert:active {
+    transform: scale(0.98);
+}
+
+/* ===== Result Page ===== */
+.result-section {
+    text-align: center;
+}
+
+.result-section h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+}
+
+.audio-container {
+    background: var(--bg-card);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    margin-bottom: 1.5rem;
+}
+
+audio {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.audio-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-download,
+.btn-back {
+    display: inline-block;
+    padding: 0.9rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    transition: background 0.2s, transform 0.1s;
+}
+
+.btn-download {
+    background: var(--success);
+    color: #fff;
+}
+
+.btn-download:hover {
+    background: #27ae60;
+}
+
+.btn-back {
+    background: var(--bg-card);
+    color: var(--text-primary);
+    border: 2px solid var(--accent);
+}
+
+.btn-back:hover {
+    background: var(--accent);
+}
+
+/* ===== Text Preview ===== */
+.text-preview {
+    margin-top: 2rem;
+}
+
+.text-preview h2 {
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+}
+
+.text-content {
+    background: var(--bg-card);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    max-height: 300px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/* ===== Footer ===== */
+footer {
+    text-align: center;
+    padding: 1.5rem 1rem;
+    background: var(--bg-secondary);
+    color: #8899aa;
+    font-size: 0.85rem;
+    border-top: 2px solid #4a6fa5;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 600px) {
+    html {
+        font-size: 16px;
+    }
+
+    header h1 {
+        font-size: 1.6rem;
+    }
+
+    .audio-actions {
+        flex-direction: column;
+    }
+
+    .btn-download,
+    .btn-back {
+        width: 100%;
+        text-align: center;
+    }
+}
